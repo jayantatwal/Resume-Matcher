@@ -1,0 +1,53 @@
+pip install spacy pdfplumber python-docx pandas
+python -m spacy download en_core_web_sm
+
+
+The main.python
+This file:
+
+Reads a resume (.pdf or .docx)
+
+Reads a job description from a .txt file
+
+Extracts name, contact info, and skills from the resume
+
+Extracts skills from the job description
+
+Calculates how well the resume matches the job
+
+Displays and saves the result
+
+
+
+
+The utils.python
+
+ extract_text_from_pdf(path)
+Opens a PDF file with pdfplumber
+
+Extracts text from every page
+
+🧾 extract_text_from_docx(path)
+Reads a .docx Word file
+
+Joins all paragraph texts
+
+✉️ extract_contact_info(text)
+Uses regular expressions to extract:
+
+Email (with pattern like someone@email.com)
+
+Phone number (with 10+ digits, with optional +, dashes, parentheses)
+
+👤 extract_name(text)
+Uses spaCy’s NER (Named Entity Recognition)
+
+Returns the first detected PERSON entity as the name
+
+🛠️ extract_skills(text, skill_set)
+Converts all text to lowercase
+
+Matches each item in the predefined SKILLS list with the text
+
+Returns the matched ones
+
