@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume Matcher</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/index.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Resume Matcher</h2>
+
+      {% if job_description %}<!--  This is a Jinja template conditional. It checks if job_description is provided. If it exists, the block inside will render. -->
+      <div class="saved-jd" onclick="fillDescription()">
+        <strong>Last Job Description:</strong><br />
+        <span id="savedText">{{ job_description }}</span>
+      </div>
+      {% endif %}
+
+      <form method="post" enctype="multipart/form-data">
+        <label for="job_description">Job Description:</label>
+        <textarea name="job_description" id="job_description" required>
+{{ job_description }}</textarea
+        >
+
+        <label for="resume">Upload Resume (.pdf or .docx):</label>
+        <input
+          type="file"
+          name="resume"
+          id="resume"
+          accept=".pdf,.docx"
+          required
+        />
+
+        <button type="submit">Match Resume</button>
+      </form>
+    </div>
+
+    <div class="footer">&copy; 2025 Resume Matcher | Powered by Flask</div>
+
+    <script>
+      function fillDescription() {
+        //This will pick the text from the savedText field in html and fill it in the below jobdescription text area
+        const saved = document.getElementById("savedText").innerText;
+        document.getElementById("job_description").value = saved;
+      }
+    </script>
+  </body>
+</html>

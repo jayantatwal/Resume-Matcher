@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Match Result</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/result.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Match Result</h2>
+      <div class="result-box">
+        <div class="field"><span>Name:</span> {{ name }}</div>
+        <div class="field"><span>Email:</span> {{ email }}</div>
+        <div class="field"><span>Phone:</span> {{ phone }}</div>
+        <div class="field">
+          <span>Skills Found:</span> {{ skills | join(", ") }}
+        </div>
+        <div class="field"><span>Match Percentage:</span> {{ match }}%</div>
+      </div>
+      <a href="/" class="button">Go Back</a>
+    </div>
+
+    <div class="footer">&copy; 2025 Resume Matcher | Powered by Flask</div>
+  </body>
+</html>
