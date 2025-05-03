@@ -9,7 +9,8 @@ from utils import (
 )
 
 app = Flask(__name__)
-app.secret_key = os.urandom(24)  # Generates a random 24-byte key
+app.secret_key = os.environ.get("FLASK_SECRET_KEY", "your_default_secret_key")
+
 
 SKILLS = ["Python", "Java", "SQL", "C++", "Data Analysis", "Communication", "Leadership"]
 
