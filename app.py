@@ -1,5 +1,6 @@
 import os
 from flask import Flask, render_template, request, session
+from dotenv import load_dotenv
 from utils import (
     extract_text_from_pdf,
     extract_text_from_docx,
@@ -8,8 +9,11 @@ from utils import (
     extract_skills,
 )
 
+# Load environment variables from the .env file
+load_dotenv()
+
 app = Flask(__name__)
-app.secret_key = os.environ.get("FLASK_SECRET_KEY", "your_default_secret_key")
+app.secret_key = os.environ.get("FLASK_SECRET_KEY", "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5")
 
 
 SKILLS = ["Python", "Java", "SQL", "C++", "Data Analysis", "Communication", "Leadership"]
